@@ -1,7 +1,10 @@
-
+https://webmail.ifisolution.com
+https://owa.nttdata-emea.com/owa/#path=/mail
 
 https://github.com/ataranto/CefSharp/issues/12
-
+https://www.sourceinsight.com/
+https://www.w3.org/
+https://www.w3.org/TR/2014/REC-html5-20141028/
 
 English:
 --------------------------------------------------
