@@ -6,6 +6,8 @@ https://www.sourceinsight.com/
 https://www.w3.org/
 https://www.w3.org/TR/2014/REC-html5-20141028/
 
+https://developer.mozilla.org/en-US/docs/Web/API/Window/open#Window_features
+
 English:
 --------------------------------------------------
 https://bugs.chromium.org/p/chromium/issues/detail?id=107864
