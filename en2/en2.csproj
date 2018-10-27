@@ -32,15 +32,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\lib\dll\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <HintPath>..\lib\dll\System.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading">
+      <HintPath>..\lib\dll\System.Threading.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <HintPath>..\lib\dll\System.Xml.Linq.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app.cs" />
+    <Compile Include="Google\GooTranslateService_v1.cs" />
+    <Compile Include="Google\GooTranslateService_v2.cs" />
+    <Compile Include="Google\ModelGoogle.cs" />
+    <Compile Include="Html.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -62,6 +83,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\lib\Gma.System.MouseKeyHook\Gma.System.MouseKeyHook.csproj">
+      <Project>{b1083b05-6230-4359-9263-a3eabbeea5c5}</Project>
+      <Name>Gma.System.MouseKeyHook</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\HtmlAgilityPack\HtmlAgilityPack.csproj">
+      <Project>{9e53646b-5349-419e-a9e1-c15dac63c19e}</Project>
+      <Name>HtmlAgilityPack</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\lib\Skybound.Gecko\Skybound.Gecko.csproj">
       <Project>{877d1a24-2d5e-4c46-a933-fcf11ea0403b}</Project>
       <Name>Skybound.Gecko</Name>

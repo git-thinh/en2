@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E53646B-5349-419E-A9E1-C15DAC63C19E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HtmlAgilityPack</RootNamespace>
+    <AssemblyName>HtmlAgilityPack</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <HintPath>..\dll\System.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\crc32.cs" />
+    <Compile Include="Core\EncodingFoundException.cs" />
+    <Compile Include="Core\HtmlAttribute.cs" />
+    <Compile Include="Core\HtmlAttributeCollection.cs" />
+    <Compile Include="Core\HtmlCmdLine.cs" />
+    <Compile Include="Core\HtmlCommentNode.cs" />
+    <Compile Include="Core\HtmlConsoleListener.cs" />
+    <Compile Include="Core\HtmlDocument.cs" />
+    <Compile Include="Core\HtmlDocument.PathMethods.cs" />
+    <Compile Include="Core\HtmlDocument.Xpath.cs" />
+    <Compile Include="Core\HtmlElementFlag.cs" />
+    <Compile Include="Core\HtmlEntity.cs" />
+    <Compile Include="Core\HtmlNameTable.cs" />
+    <Compile Include="Core\HtmlNode.cs" />
+    <Compile Include="Core\HtmlNode.Encapsulator.cs" />
+    <Compile Include="Core\HtmlNode.Xpath.cs" />
+    <Compile Include="Core\HtmlNodeCollection.cs" />
+    <Compile Include="Core\HtmlNodeNavigator.cs" />
+    <Compile Include="Core\HtmlNodeType.cs" />
+    <Compile Include="Core\HtmlParseError.cs" />
+    <Compile Include="Core\HtmlParseErrorCode.cs" />
+    <Compile Include="Core\HtmlTextNode.cs" />
+    <Compile Include="Core\HtmlWeb.cs" />
+    <Compile Include="Core\HtmlWeb.Xpath.cs" />
+    <Compile Include="Core\HtmlWebException.cs" />
+    <Compile Include="Core\InvalidProgramException.cs" />
+    <Compile Include="Core\IOLibrary.cs" />
+    <Compile Include="Core\Metro\HtmlWeb.cs" />
+    <Compile Include="Core\Metro\InvalidProgramException.cs" />
+    <Compile Include="Core\MixedCodeDocument.cs" />
+    <Compile Include="Core\MixedCodeDocumentCodeFragment.cs" />
+    <Compile Include="Core\MixedCodeDocumentFragment.cs" />
+    <Compile Include="Core\MixedCodeDocumentFragmentList.cs" />
+    <Compile Include="Core\MixedCodeDocumentFragmentType.cs" />
+    <Compile Include="Core\MixedCodeDocumentTextFragment.cs" />
+    <Compile Include="Core\NameValuePair.cs" />
+    <Compile Include="Core\NameValuePairList.cs" />
+    <Compile Include="Core\Trace.cs" />
+    <Compile Include="Core\Trace.FullFramework.cs" />
+    <Compile Include="Core\Utilities.cs" />
+    <Compile Include="CssSelectors\CssSelector.cs" />
+    <Compile Include="CssSelectors\ExtensionMethods.cs" />
+    <Compile Include="CssSelectors\NodeExtensionMethods.cs" />
+    <Compile Include="CssSelectors\PseudoClass.cs" />
+    <Compile Include="CssSelectors\PseudoClassNameAttribute.cs" />
+    <Compile Include="CssSelectors\PseudoClassSelectors\FirstChildPseudoClass.cs" />
+    <Compile Include="CssSelectors\PseudoClassSelectors\LastChildPseudoClass.cs" />
+    <Compile Include="CssSelectors\PseudoClassSelectors\NotPseudoClass.cs" />
+    <Compile Include="CssSelectors\PseudoClassSelectors\NthChildPseudoClass.cs" />
+    <Compile Include="CssSelectors\Selectors\AllSelector.cs" />
+    <Compile Include="CssSelectors\Selectors\AttributeSelector.cs" />
+    <Compile Include="CssSelectors\Selectors\ClassNameSelector.cs" />
+    <Compile Include="CssSelectors\Selectors\IdSelector.cs" />
+    <Compile Include="CssSelectors\Selectors\ImediateChildrenSelector.cs" />
+    <Compile Include="CssSelectors\Selectors\PseudoClassSelector.cs" />
+    <Compile Include="CssSelectors\Selectors\SiblingImediateSelector.cs" />
+    <Compile Include="CssSelectors\Selectors\SiblingSelector.cs" />
+    <Compile Include="CssSelectors\Selectors\TagNameSelector.cs" />
+    <Compile Include="CssSelectors\Token.cs" />
+    <Compile Include="CssSelectors\Tokenizer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CssSelectors\README.md" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

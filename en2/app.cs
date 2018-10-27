@@ -5,6 +5,9 @@ using System.Runtime.InteropServices;
 using System.Net;
 using System.Reflection;
 using System.IO;
+using System.Web;
+using System.Text;
+using System.Diagnostics;
 
 // Tested with mono 2.6.3 and mono 2.8
 // Run this with the following command:
@@ -80,7 +83,8 @@ namespace en2
 
             Controls.Add(m_tabControl);
 
-            m_tabControl.ControlRemoved += delegate {
+            m_tabControl.ControlRemoved += delegate
+            {
                 if (m_tabControl.TabCount == 0)
                 {
                     AddTab();
@@ -89,49 +93,49 @@ namespace en2
 
         }
 
-        protected void ModifyElements(GeckoElement element, string tagName, Action<GeckoElement> mod)
-        {
-            while (element != null)
-            {
-                if (element.TagName == tagName)
-                {
-                    mod(element);
-                }
-                ModifyElements(element.FirstChild as GeckoElement, tagName, mod);
-                element = (element.NextSibling as GeckoElement);
-            }
-        }
+        //protected void ModifyElements(GeckoElement element, string tagName, Action<GeckoElement> mod)
+        //{
+        //    while (element != null)
+        //    {
+        //        if (element.TagName == tagName)
+        //        {
+        //            mod(element);
+        //        }
+        //        ModifyElements(element.FirstChild as GeckoElement, tagName, mod);
+        //        element = (element.NextSibling as GeckoElement);
+        //    }
+        //}
 
-        protected void TestModifyingDom(GeckoWebBrowser browser)
-        {
-            GeckoElement g = browser.Document.DocumentElement;
-            ModifyElements(g, "BODY", e =>
-            {
-                for (int i = 1; i < 4; ++i)
-                {
-                    var newElement = g.OwnerDocument.CreateElement(String.Format("h{0}", i));
-                    newElement.TextContent = "Geckofx added this text.";
-                    g.InsertBefore(newElement, e);
-                }
-            });
-        }
+        //protected void TestModifyingDom(GeckoWebBrowser browser)
+        //{
+        //    GeckoElement g = browser.Document.DocumentElement;
+        //    ModifyElements(g, "BODY", e =>
+        //    {
+        //        for (int i = 1; i < 4; ++i)
+        //        {
+        //            var newElement = g.OwnerDocument.CreateElement(String.Format("h{0}", i));
+        //            newElement.TextContent = "Geckofx added this text.";
+        //            g.InsertBefore(newElement, e);
+        //        }
+        //    });
+        //}
 
-        protected void DisplayElements(GeckoElement g)
-        {
-            while (g != null)
-            {
-                Console.WriteLine("tag = {0} value = {1}", g.TagName, g.TextContent);
-                DisplayElements(g.FirstChild as GeckoElement);
-                g = (g.NextSibling as GeckoElement);
-            }
+        //protected void DisplayElements(GeckoElement g)
+        //{
+        //    while (g != null)
+        //    {
+        //        Console.WriteLine("tag = {0} value = {1}", g.TagName, g.TextContent);
+        //        DisplayElements(g.FirstChild as GeckoElement);
+        //        g = (g.NextSibling as GeckoElement);
+        //    }
 
-        }
+        //}
 
-        protected void TestQueryingOfDom(GeckoWebBrowser browser)
-        {
-            GeckoElement g = browser.Document.DocumentElement;
-            DisplayElements(g);
-        }
+        //protected void TestQueryingOfDom(GeckoWebBrowser browser)
+        //{
+        //    GeckoElement g = browser.Document.DocumentElement;
+        //    DisplayElements(g);
+        //}
 
         protected void AddTab()
         {
@@ -160,31 +164,154 @@ namespace en2
 
         }
 
+        public string f_link_getHtmlOnline(string url)
+        {
+            /* https://stackoverflow.com/questions/4291912/process-start-how-to-get-the-output */
+            Process process = new Process();
+            process.StartInfo.CreateNoWindow = true;
+            process.StartInfo.FileName = "bin/curl.exe";
+            //process.StartInfo.Arguments = url;
+            process.StartInfo.Arguments = url;
+            //process.StartInfo.Arguments = "--insecure " + url;
+            //process.StartInfo.Arguments = "--max-time 5 -v " + url; /* -v url: handle error 302 found redirect localtion*/
+            //process.StartInfo.Arguments = "-m 5 -v " + url; /* -v url: handle error 302 found redirect localtion*/
+            //process.StartInfo.Arguments = "--insecure -v " + url + @" -H ""User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:62.0) Gecko/20100101 Firefox/62.0"""; /* -v url: handle error 302 found redirect localtion*/
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.StandardOutputEncoding = Encoding.UTF8;
+            process.Start();
+            //* Read the output (or the error)
+            string html = process.StandardOutput.ReadToEnd();
+            //if (string.IsNullOrEmpty(html))
+            //{
+            //    string err = process.StandardError.ReadToEnd(), urlDirect = string.Empty;
+
+            //    int pos = err.IndexOf("< Location: ");
+            //    if (pos != -1)
+            //    {
+            //        urlDirect = err.Substring(pos + 12, err.Length - (pos + 12)).Split(new char[] { '\r', '\n' })[0].Trim();
+            //        if (urlDirect[0] == '/')
+            //        {
+            //            Uri uri = new Uri(url);
+            //            urlDirect = uri.Scheme + "://" + uri.Host + urlDirect;
+            //        }
+
+            //        Debug.WriteLine("-> Redirect: " + urlDirect);
+
+
+            //        html = f_link_getHtmlCache(urlDirect);
+            //        if (string.IsNullOrEmpty(html))
+            //        {
+            //            return "<script> location.href='" + urlDirect + "'; </script>";
+            //        }
+            //        else
+            //            return html;
+            //    }
+            //    else
+            //    {
+            //        Debug.WriteLine(" ??????????????????????????????????????????? ERROR: " + url);
+            //    }
+
+            //    Debug.WriteLine(" -> Fail: " + url);
+
+            //    return null;
+            //}
+
+            Debug.WriteLine(" -> Ok: " + url);
+
+            //////string title = Html.f_html_getTitle(html);
+            //html = _htmlFormat(url, html);
+            //////f_cacheUrl(url);
+            //////CACHE.TryAdd(url, html);
+
+            //string err = process.StandardError.ReadToEnd();
+            process.WaitForExit();
+
+            ////if (_fomMain != null) _fomMain.f_browser_updateInfoPage(url, title);
+
+            return html;
+
+            //////* Create your Process
+            ////Process process = new Process();
+            ////process.StartInfo.FileName = "curl.exe";
+            ////process.StartInfo.Arguments = url;
+            ////process.StartInfo.UseShellExecute = false;
+            ////process.StartInfo.RedirectStandardOutput = true;
+            ////process.StartInfo.RedirectStandardError = true;
+            ////process.StartInfo.StandardOutputEncoding = Encoding.UTF8;
+            //////* Set your output and error (asynchronous) handlers
+            ////process.OutputDataReceived += (se, ev) => {
+            ////    string html = ev.Data;
+
+            ////    _link.TryAdd(url, _link.Count + 1);
+            ////    _html.TryAdd(url, html);
+            ////};
+            //////process.ErrorDataReceived += new DataReceivedEventHandler(OutputHandler);
+            //////* Start process and handlers
+            ////process.Start();
+            ////process.BeginOutputReadLine();
+            ////process.BeginErrorReadLine();
+            ////process.WaitForExit(); 
+        }
+
+        string _htmlFormat(string url, string html)
+        {
+            string s = HttpUtility.HtmlDecode(html);
+
+            // Fetch all url same domain in this page ...
+            //string[] urls = Html.f_html_actractUrl(url, s);
+            s = Html.f_html_Format(url, s);
+
+            int posH1 = s.ToLower().IndexOf("<h1");
+            if (posH1 != -1) s = s.Substring(posH1, s.Length - posH1);
+
+            return s;
+        }
+
+        string f_text_convert_UTF8_ACSII(string utf8)
+        {
+            string stFormD = utf8.Normalize(NormalizationForm.FormD);
+            StringBuilder sb = new StringBuilder();
+            for (int ich = 0; ich < stFormD.Length; ich++)
+            {
+                System.Globalization.UnicodeCategory uc = System.Globalization.CharUnicodeInfo.GetUnicodeCategory(stFormD[ich]);
+                if (uc != System.Globalization.UnicodeCategory.NonSpacingMark)
+                {
+                    sb.Append(stFormD[ich]);
+                }
+            }
+            sb = sb.Replace('Đ', 'D');
+            sb = sb.Replace('đ', 'd');
+            return (sb.ToString().Normalize(NormalizationForm.FormD));
+        }
+
         /// <summary>
         /// An example event handler for the DomClick event.
         /// Prevents a link click from navigating.
         /// </summary>
-        void StopLinksNavigating(object sender, GeckoDomEventArgs e)
-        {
-            if (sender != null && e != null && e.Target != null && e.Target.TagName != null)
-            {
-                GeckoElement clicked = e.Target;
+        ////void StopLinksNavigating(object sender, GeckoDomEventArgs e)
+        ////{
+        ////    if (sender != null && e != null && e.Target != null && e.Target.TagName != null)
+        ////    {
+        ////        GeckoElement clicked = e.Target;
 
-                // prevent clicking on Links from navigation to the
-                if (clicked.TagName == "A")
-                {
-                    e.Handled = true;
-                    MessageBox.Show(sender as IWin32Window, String.Format("You clicked on Link {0}", clicked.GetAttribute("href")));
-                }
+        ////        // prevent clicking on Links from navigation to the
+        ////        if (clicked.TagName == "A")
+        ////        {
+        ////            e.Handled = true;
+        ////            MessageBox.Show(sender as IWin32Window, String.Format("You clicked on Link {0}", clicked.GetAttribute("href")));
+        ////        }
 
-            }
-        }
+        ////    }
+        ////}
 
         protected void AddToolbarAndBrowserToTab(TabPage tabPage, GeckoWebBrowser browser)
         {
             TextBox urlbox = new TextBox();
             urlbox.Top = 0;
             urlbox.Width = 200;
+            urlbox.Text = "https://dictionary.cambridge.org/grammar/british-grammar/above-or-over";
 
             Button nav = new Button();
             nav.Text = "Go";
@@ -198,18 +325,40 @@ namespace en2
             closeTab.Text = "Close";
             closeTab.Left = 200 + nav.Width + newTab.Width;
 
-            nav.Click += delegate {
-                // use javascript to warn if url box is empty.
-                if (string.IsNullOrEmpty(urlbox.Text.Trim()))
-                    browser.Navigate("javascript:alert('hey try typing a url!');");
+            browser.DocumentCompleted += (se, ev) =>
+            {
+                string url = urlbox.Text, text = string.Empty, _fix_lib = string.Empty;
 
-                browser.Navigate(urlbox.Text);
-                tabPage.Text = urlbox.Text;
+                Debug.WriteLine("#-> " + url);
+
+                text = f_link_getHtmlOnline(url);
+
+                string head = text.Split(new string[] { "<body" }, StringSplitOptions.None)[0], s = "<div" + text.Substring(head.Length + 5);
+                int posH1 = s.ToLower().IndexOf("<h1");
+                if (posH1 != -1) s = s.Substring(posH1, s.Length - posH1);
+
+                head = Html.f_html_Format(url, head);
+                s = Html.f_html_Format(url, s);
+
+                //if (File.Exists("view/fix.html")) _fix_lib = File.ReadAllText("view/fix.html");
+                text = head.Replace("<head>", @"<head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />" + _fix_lib) + "<body><article id=___body><!--START_BODY-->" + s + "<!--END_BODY--></article></body></html>";
+
+                browser.Document.Body.InnerHtml = s;
+
+            };
+
+            nav.Click += delegate
+            {
+                //// use javascript to warn if url box is empty.
+                //if (string.IsNullOrEmpty(urlbox.Text.Trim())) browser.Navigate("javascript:alert('hey try typing a url!');");
+                //browser.Navigate(urlbox.Text);
+                //tabPage.Text = urlbox.Text;
             };
 
             newTab.Click += delegate { AddTab(); };
 
-            closeTab.Click += delegate {
+            closeTab.Click += delegate
+            {
                 m_tabControl.Controls.Remove(tabPage);
                 browser.Dispose();
             };

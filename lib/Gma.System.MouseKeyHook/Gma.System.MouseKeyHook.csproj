@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B1083B05-6230-4359-9263-A3EABBEEA5C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Gma.System.MouseKeyHook</RootNamespace>
+    <AssemblyName>Gma.System.MouseKeyHook</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\build\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <HintPath>..\dll\System.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Combination.cs" />
+    <Compile Include="Hook.cs" />
+    <Compile Include="HotKeys\HotKeyArgs.cs" />
+    <Compile Include="HotKeys\HotKeySet.cs" />
+    <Compile Include="HotKeys\HotKeySetCollection.cs" />
+    <Compile Include="HotKeys\HotKeySetsListener.cs" />
+    <Compile Include="IKeyboardEvents.cs" />
+    <Compile Include="IKeyboardMouseEvents.cs" />
+    <Compile Include="IMouseEvents.cs" />
+    <Compile Include="Implementation\AppEventFacade.cs" />
+    <Compile Include="Implementation\AppKeyListener.cs" />
+    <Compile Include="Implementation\AppMouseListener.cs" />
+    <Compile Include="Implementation\BaseListener.cs" />
+    <Compile Include="Implementation\ButtonSet.cs" />
+    <Compile Include="Implementation\Callback.cs" />
+    <Compile Include="Implementation\Chord.cs" />
+    <Compile Include="Implementation\EventFacade.cs" />
+    <Compile Include="Implementation\GlobalEventFacade.cs" />
+    <Compile Include="Implementation\GlobalKeyListener.cs" />
+    <Compile Include="Implementation\GlobalMouseListener.cs" />
+    <Compile Include="Implementation\KeyboardState.cs" />
+    <Compile Include="Implementation\KeyListener.cs" />
+    <Compile Include="Implementation\KeysExtensions.cs" />
+    <Compile Include="Implementation\MouseListener.cs" />
+    <Compile Include="Implementation\Subscribe.cs" />
+    <Compile Include="KeyCombinationExtensions.cs" />
+    <Compile Include="KeyEventArgsExt.cs" />
+    <Compile Include="KeyPressEventArgsExt.cs" />
+    <Compile Include="MouseEventExtArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sequence.cs" />
+    <Compile Include="SequenceBase.cs" />
+    <Compile Include="WinApi\AppMouseStruct.cs" />
+    <Compile Include="WinApi\CallbackData.cs" />
+    <Compile Include="WinApi\HookHelper.cs" />
+    <Compile Include="WinApi\HookIds.cs" />
+    <Compile Include="WinApi\HookNativeMethods.cs" />
+    <Compile Include="WinApi\HookProcedure.cs" />
+    <Compile Include="WinApi\HookProcedureHandle.cs" />
+    <Compile Include="WinApi\HookResult.cs" />
+    <Compile Include="WinApi\HotkeysNativeMethods.cs" />
+    <Compile Include="WinApi\KeyboardHookStruct.cs" />
+    <Compile Include="WinApi\KeyboardNativeMethods.cs" />
+    <Compile Include="WinApi\Messages.cs" />
+    <Compile Include="WinApi\MouseNativeMethods.cs" />
+    <Compile Include="WinApi\MouseStruct.cs" />
+    <Compile Include="WinApi\Point.cs" />
+    <Compile Include="WinApi\ThreadNativeMethods.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HotKeys\ReadMe.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
