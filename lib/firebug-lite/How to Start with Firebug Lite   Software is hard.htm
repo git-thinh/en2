@@ -1,0 +1,500 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<title>How to Start with Firebug Lite | Software is hard</title>
+	
+	<meta name="generator" content="WordPress 4.7.11" />
+	<meta name="description" content="More musings on software development" />
+
+
+	<style type="text/css" media="screen">
+		@import url( http://www.softwareishard.com/blog/wp-content/themes/miniBits/miniBits/style.css );
+	</style>
+
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.softwareishard.com/blog/feed/" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://www.softwareishard.com/blog/feed/rss/" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://www.softwareishard.com/blog/feed/atom/" />
+	<link rel="pingback" href="http://www.softwareishard.com/blog/xmlrpc.php" />
+    	<link rel='archives' title='June 2017' href='http://www.softwareishard.com/blog/2017/06/' />
+	<link rel='archives' title='February 2017' href='http://www.softwareishard.com/blog/2017/02/' />
+	<link rel='archives' title='April 2016' href='http://www.softwareishard.com/blog/2016/04/' />
+	<link rel='archives' title='March 2015' href='http://www.softwareishard.com/blog/2015/03/' />
+	<link rel='archives' title='June 2014' href='http://www.softwareishard.com/blog/2014/06/' />
+	<link rel='archives' title='March 2014' href='http://www.softwareishard.com/blog/2014/03/' />
+	<link rel='archives' title='September 2013' href='http://www.softwareishard.com/blog/2013/09/' />
+	<link rel='archives' title='August 2013' href='http://www.softwareishard.com/blog/2013/08/' />
+	<link rel='archives' title='July 2013' href='http://www.softwareishard.com/blog/2013/07/' />
+	<link rel='archives' title='June 2013' href='http://www.softwareishard.com/blog/2013/06/' />
+	<link rel='archives' title='May 2013' href='http://www.softwareishard.com/blog/2013/05/' />
+	<link rel='archives' title='February 2013' href='http://www.softwareishard.com/blog/2013/02/' />
+	<link rel='archives' title='January 2013' href='http://www.softwareishard.com/blog/2013/01/' />
+	<link rel='archives' title='December 2012' href='http://www.softwareishard.com/blog/2012/12/' />
+	<link rel='archives' title='November 2012' href='http://www.softwareishard.com/blog/2012/11/' />
+	<link rel='archives' title='October 2012' href='http://www.softwareishard.com/blog/2012/10/' />
+	<link rel='archives' title='August 2012' href='http://www.softwareishard.com/blog/2012/08/' />
+	<link rel='archives' title='July 2012' href='http://www.softwareishard.com/blog/2012/07/' />
+	<link rel='archives' title='June 2012' href='http://www.softwareishard.com/blog/2012/06/' />
+	<link rel='archives' title='May 2012' href='http://www.softwareishard.com/blog/2012/05/' />
+	<link rel='archives' title='March 2012' href='http://www.softwareishard.com/blog/2012/03/' />
+	<link rel='archives' title='February 2012' href='http://www.softwareishard.com/blog/2012/02/' />
+	<link rel='archives' title='July 2011' href='http://www.softwareishard.com/blog/2011/07/' />
+	<link rel='archives' title='June 2011' href='http://www.softwareishard.com/blog/2011/06/' />
+	<link rel='archives' title='May 2011' href='http://www.softwareishard.com/blog/2011/05/' />
+	<link rel='archives' title='March 2011' href='http://www.softwareishard.com/blog/2011/03/' />
+	<link rel='archives' title='February 2011' href='http://www.softwareishard.com/blog/2011/02/' />
+	<link rel='archives' title='January 2011' href='http://www.softwareishard.com/blog/2011/01/' />
+	<link rel='archives' title='December 2010' href='http://www.softwareishard.com/blog/2010/12/' />
+	<link rel='archives' title='November 2010' href='http://www.softwareishard.com/blog/2010/11/' />
+	<link rel='archives' title='October 2010' href='http://www.softwareishard.com/blog/2010/10/' />
+	<link rel='archives' title='September 2010' href='http://www.softwareishard.com/blog/2010/09/' />
+	<link rel='archives' title='August 2010' href='http://www.softwareishard.com/blog/2010/08/' />
+	<link rel='archives' title='July 2010' href='http://www.softwareishard.com/blog/2010/07/' />
+	<link rel='archives' title='June 2010' href='http://www.softwareishard.com/blog/2010/06/' />
+	<link rel='archives' title='May 2010' href='http://www.softwareishard.com/blog/2010/05/' />
+	<link rel='archives' title='March 2010' href='http://www.softwareishard.com/blog/2010/03/' />
+	<link rel='archives' title='February 2010' href='http://www.softwareishard.com/blog/2010/02/' />
+	<link rel='archives' title='January 2010' href='http://www.softwareishard.com/blog/2010/01/' />
+	<link rel='archives' title='November 2009' href='http://www.softwareishard.com/blog/2009/11/' />
+	<link rel='archives' title='October 2009' href='http://www.softwareishard.com/blog/2009/10/' />
+	<link rel='archives' title='September 2009' href='http://www.softwareishard.com/blog/2009/09/' />
+	<link rel='archives' title='July 2009' href='http://www.softwareishard.com/blog/2009/07/' />
+	<link rel='archives' title='May 2009' href='http://www.softwareishard.com/blog/2009/05/' />
+	<link rel='archives' title='April 2009' href='http://www.softwareishard.com/blog/2009/04/' />
+	<link rel='archives' title='March 2009' href='http://www.softwareishard.com/blog/2009/03/' />
+	<link rel='archives' title='January 2009' href='http://www.softwareishard.com/blog/2009/01/' />
+	<link rel='archives' title='December 2008' href='http://www.softwareishard.com/blog/2008/12/' />
+	<link rel='archives' title='November 2008' href='http://www.softwareishard.com/blog/2008/11/' />
+	<link rel='archives' title='October 2008' href='http://www.softwareishard.com/blog/2008/10/' />
+	<link rel='archives' title='September 2008' href='http://www.softwareishard.com/blog/2008/09/' />
+	<link rel='archives' title='August 2008' href='http://www.softwareishard.com/blog/2008/08/' />
+	<link rel='archives' title='July 2008' href='http://www.softwareishard.com/blog/2008/07/' />
+	<link rel='archives' title='June 2008' href='http://www.softwareishard.com/blog/2008/06/' />
+	<link rel='archives' title='May 2008' href='http://www.softwareishard.com/blog/2008/05/' />
+	<link rel='archives' title='April 2008' href='http://www.softwareishard.com/blog/2008/04/' />
+	<link rel='archives' title='March 2008' href='http://www.softwareishard.com/blog/2008/03/' />
+	<link rel='archives' title='February 2008' href='http://www.softwareishard.com/blog/2008/02/' />
+	
+	  
+<!-- All in One SEO Pack 2.3.12.2.1 by Michael Torbert of Semper Fi Web Design[280,336] -->
+<meta name="keywords"  content="bookmarklet,chrome,extension,firebug lite,firefox,ipad" />
+
+<link rel="canonical" href="http://www.softwareishard.com/blog/planet-mozilla/how-to-start-with-firebug-lite/" />
+<!-- /all in one seo pack -->
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Software is hard &raquo; How to Start with Firebug Lite Comments Feed" href="http://www.softwareishard.com/blog/planet-mozilla/how-to-start-with-firebug-lite/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.softwareishard.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.11"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='wp-lightbox-2.min.css-css'  href='http://www.softwareishard.com/blog/wp-content/plugins/wp-lightbox-2/styles/lightbox.min.css?ver=1.3.4' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.softwareishard.com/blog/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='http://www.softwareishard.com/blog/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<link rel='https://api.w.org/' href='http://www.softwareishard.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.softwareishard.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.softwareishard.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Firebug Extension: FirePicker &#8211; Pick your color' href='http://www.softwareishard.com/blog/firebug/firebug-extension-firepicker-pick-your-color/' />
+<link rel='next' title='Firebug Tip: getEventListeners() command' href='http://www.softwareishard.com/blog/planet-mozilla/firebug-tip-geteventlisteners-command/' />
+<meta name="generator" content="WordPress 4.7.11" />
+<link rel='shortlink' href='http://www.softwareishard.com/blog/?p=800' />
+<link rel="alternate" type="application/json+oembed" href="http://www.softwareishard.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.softwareishard.com%2Fblog%2Fplanet-mozilla%2Fhow-to-start-with-firebug-lite%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.softwareishard.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.softwareishard.com%2Fblog%2Fplanet-mozilla%2Fhow-to-start-with-firebug-lite%2F&#038;format=xml" />
+<link rel="stylesheet" href="http://www.softwareishard.com/blog/wp-content/plugins/deans_code_highlighter/geshi.css"  type="text/css" /></head>
+
+<body>
+<script  type="text/javascript">
+function installXPI(href)
+{
+    if (typeof(InstallTrigger) != 'undefined')
+    {
+        var xpi = {'Firebug': href};
+        InstallTrigger.install(xpi);
+    }
+    else
+    {
+        alert("You must be using Firefox to install this extension.");
+    }
+}
+
+function run(id) 
+{
+    try 
+    {
+        var form = document.createElement("form");
+        form.setAttribute("action", "http://www.softwareishard.com/domplate/runner/index.php");
+        form.setAttribute("method", "POST");
+        form.setAttribute("style", "display:none");
+
+        var parts = ["script", "data", "css"];
+        for (var i=0; i<parts.length; i++) 
+        {
+            var part = document.getElementById(id+"-"+parts[i]);
+            if (!part)
+                continue;
+            var input = document.createElement("input");
+            input.setAttribute("name", parts[i]);          
+            input.setAttribute("value", part.innerHTML);
+            form.appendChild(input);
+        }
+
+        document.body.appendChild(form);
+        form.submit();     
+    } 
+    catch (err) 
+    {
+        alert("Error: " + err);
+    }  
+}
+</script>
+
+<div id="wrapper">
+
+<div id="main_header">
+    <div class="top"></div>
+
+    <div class="main_sidebar">
+        <a class="rss_posts" href="http://feeds.feedburner.com/SoftwareIsHard"
+            title="Subscribe to RSS Feed"><img border="0"
+                src="http://www.softwareishard.com/blog/wp-content/themes/miniBits/miniBits/img/rss.gif"
+                alt="Subscribe to RSS Feed"/></a>
+        <div id="header">
+            <h1><a href="http://www.softwareishard.com/blog/">Software is hard</a></h1>
+            <span class="desc">More musings on software development</span>
+            <div class="desc">Jan Odvarko</div>
+            <div class="desc">odvarko@gmail.com</div>
+        </div>
+    </div>
+
+    <div class="bottom"></div>
+</div>
+	
+<div class="container">
+<hr />
+
+
+
+
+
+<div class="post">
+	<div class="titolo">
+		<h2><a href="http://www.softwareishard.com/blog/planet-mozilla/how-to-start-with-firebug-lite/">How to Start with Firebug Lite</a></h2>
+  		<small>by Honza</small>
+	</div>
+  	<span class="edit"></span>
+
+  	<div class="corpo">
+  	  	<ul class="more_info">
+  	  		<li class="first"><strong>Published</strong>:<span>August 21st, 2013</span></li>
+  	  		<li><strong>Comments</strong>:<span><a href="http://www.softwareishard.com/blog/planet-mozilla/how-to-start-with-firebug-lite/#comments ">3 Comments</a></span></li>
+  	 		<li><strong>Category</strong>:<span><a href="http://www.softwareishard.com/blog/category/firebug-lite/" rel="category tag">Firebug Lite</a>, <a href="http://www.softwareishard.com/blog/category/planet-mozilla/" rel="category tag">Planet Mozilla</a></span></li>
+  	  	</ul>
+		<p><a href="https://getfirebug.com/firebuglite">FirebugLite</a> is lightweight version of <a href="https://getfirebug.com/">Firebug</a> (the Firefox extension) that does implement only a subset of features (mainly missing the Script and Net panel).</p>
+<p>It's implemented as pure web application and running in all major browser.</p>
+<p>Using Firebug lite is quick since it doesn't have to be installed (it's a web app) and it can also be injected into an existing page using a bookmarklet.</p>
+<p>The next set of screenshots shows how Firebug Lite looks like in various browsers.</p>
+<p><img alt="" src="http://www.softwareishard.com/images/posts/start-with-firebuglite/firefox.png" class="aligncenter" width="520" height="300" /></p>
+<p>&nbsp;</p>
+<p><img alt="" src="http://www.softwareishard.com/images/posts/start-with-firebuglite/chrome.png" class="aligncenter" width="520" height="297" /></p>
+<p>&nbsp;</p>
+<p><img alt="" src="http://www.softwareishard.com/images/posts/start-with-firebuglite/explorer.png" class="aligncenter" width="520" height="263" /></p>
+<p>&nbsp;</p>
+<p>Let's see how you can run Firebug Lite within a web page. This post covers four scenarios:</p>
+<ul>
+<li>Include using &lt;script&gt; element</li>
+<li>Run through Bookmarklet</li>
+<li>Firebug Lite on iPad</li>
+<li>Run as Chrome Extension</li>
+</ul>
+<p><span id="more-800"></span></p>
+<h3>Include using &lt;script&gt; element</h3>
+<p>Firebug Lite is pure JS application and so you can include it in your page just like any other JavaScript code. See an example:</p>
+<div class="dean_ch" style="white-space: wrap;"><span class="sc0">&lt;!DOCTYPE html&gt;</span><br />
+<span class="sc3"><span class="re1">&lt;html<span class="re2">&gt;</span></span></span><br />
+<span class="sc3"><span class="re1">&lt;head<span class="re2">&gt;</span></span></span><br />
+&nbsp; <span class="sc3"><span class="re1">&lt;title<span class="re2">&gt;</span></span></span>Test<span class="sc3"><span class="re1">&lt;/title<span class="re2">&gt;</span></span></span><br />
+&nbsp; <span class="sc3"><span class="re1">&lt;script</span> <span class="re0">src</span>=<span class="st0">&quot;https://getfirebug.com/firebug-lite.js&quot;</span><br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span class="re0">type</span>=<span class="st0">&quot;text/javascript&quot;</span><span class="re2">&gt;</span></span><span class="sc3"><span class="re1">&lt;/script<span class="re2">&gt;</span></span></span><br />
+<span class="sc3"><span class="re1">&lt;/head<span class="re2">&gt;</span></span></span><br />
+<span class="sc3"><span class="re1">&lt;body<span class="re2">&gt;</span></span></span><br />
+&nbsp; <span class="sc3"><span class="re1">&lt;div</span> <span class="re0">style</span>=<span class="st0">&quot;color:green&quot;</span><span class="re2">&gt;</span></span>Hello<span class="sc3"><span class="re1">&lt;/div<span class="re2">&gt;</span></span></span><br />
+<span class="sc3"><span class="re1">&lt;/body<span class="re2">&gt;</span></span></span><br />
+<span class="sc3"><span class="re1">&lt;/html<span class="re2">&gt;</span></span></span></div>
+<p>This approach is recommended in cases when you often inspect the same page and you want to have Firebug Lite UI always ready after page load (refresh). You can also download <a href="https://getfirebug.com/releases/lite/latest/firebug-lite.tar.tgz">firebug-lite.js</a> file and run it locally from your web server as follows:</p>
+<div class="dean_ch" style="white-space: wrap;"><span class="sc3"><span class="re1">&lt;script</span> <span class="re0">type</span>=<span class="st0">&quot;text/javascript&quot;</span> <span class="re0">src</span>=<span class="st0">&quot;/local/path/to/firebug-lite.js&quot;</span><span class="re2">&gt;</span></span><span class="sc3"><span class="re1">&lt;/script<span class="re2">&gt;</span></span></span></div>
+<p>Read <a href="https://getfirebug.com/firebuglite">more</a>.</p>
+<h3>Run through Bookmarklet</h3>
+<p>You an also inject Firebug Lite into an existing page using the following bookmarklet. </p>
+<div class="dean_ch" style="white-space: wrap;">javascript:<span class="br0">&#40;</span><span class="kw2">function</span><span class="br0">&#40;</span>F,i,r,e,b,u,g,L,I,T,E<span class="br0">&#41;</span><span class="br0">&#123;</span><span class="kw1">if</span><span class="br0">&#40;</span>F.<span class="me1">getElementById</span><span class="br0">&#40;</span>b<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="kw1">return</span>;E=F<span class="br0">&#91;</span>i+<span class="st0">'NS'</span><span class="br0">&#93;</span>&amp;&amp;F.<span class="me1">documentElement</span>.<span class="me1">namespaceURI</span>;E=E?F<span class="br0">&#91;</span>i+<span class="st0">'NS'</span><span class="br0">&#93;</span><span class="br0">&#40;</span>E,<span class="st0">'script'</span><span class="br0">&#41;</span>:F<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="br0">&#40;</span><span class="st0">'script'</span><span class="br0">&#41;</span>;E<span class="br0">&#91;</span>r<span class="br0">&#93;</span><span class="br0">&#40;</span><span class="st0">'id'</span>,b<span class="br0">&#41;</span>;E<span class="br0">&#91;</span>r<span class="br0">&#93;</span><span class="br0">&#40;</span><span class="st0">'src'</span>,I+g+T<span class="br0">&#41;</span>;E<span class="br0">&#91;</span>r<span class="br0">&#93;</span><span class="br0">&#40;</span>b,u<span class="br0">&#41;</span>;<span class="br0">&#40;</span>F<span class="br0">&#91;</span>e<span class="br0">&#93;</span><span class="br0">&#40;</span><span class="st0">'head'</span><span class="br0">&#41;</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span>||F<span class="br0">&#91;</span>e<span class="br0">&#93;</span><span class="br0">&#40;</span><span class="st0">'body'</span><span class="br0">&#41;</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="br0">&#41;</span>.<span class="me1">appendChild</span><span class="br0">&#40;</span>E<span class="br0">&#41;</span>;E=new%20Image;E<span class="br0">&#91;</span>r<span class="br0">&#93;</span><span class="br0">&#40;</span><span class="st0">'src'</span>,I+L<span class="br0">&#41;</span>;<span class="br0">&#125;</span><span class="br0">&#41;</span><span class="br0">&#40;</span>document,<span class="st0">'createElement'</span>,<span class="st0">'setAttribute'</span>,<span class="st0">'getElementsByTagName'</span>,<span class="st0">'FirebugLite'</span>,<span class="st0">'4'</span>,<span class="st0">'firebug-lite.js'</span>,<span class="st0">'releases/lite/latest/skin/xp/sprite.png'</span>,<span class="st0">'https://getfirebug.com/'</span>,<span class="st0">'#startOpened'</span><span class="br0">&#41;</span>;</div>
+<p>Just drag this <a href="javascript:(function(F,i,r,e,b,u,g,L,I,T,E){if(F.getElementById(b))return;E=F[i+'NS']&&F.documentElement.namespaceURI;E=E?F[i+'NS'](E,'script'):F[i]('script');E[r]('id',b);E[r]('src',I+g+T);E[r](b,u);(F[e]('head')[0]||F[e]('body')[0]).appendChild(E);E=new%20Image;E[r]('src',I+L);})(document,'createElement','setAttribute','getElementsByTagName','FirebugLite','4','firebug-lite.js','releases/lite/latest/skin/xp/sprite.png','https://getfirebug.com/','#startOpened');">Firebug Lite Link</a> into your Bookmarks toolbar. You can also click the link immediately to test Firebug Lite on this page.</p>
+<p>This approach is recommended in cases when you use Firebug Lite for inspecting random pages.</p>
+<h3>Firebug Lite on iPad</h3>
+<p>One of the most interesting use cases is running Firebug Lite on mobile devices, especially tablets since they have bigger screen (Firebug Lite is not yet optimized for small screens).</p>
+<p>Inspecting pages on mobile devices can be faster with Firebug Lite since you don't have to deal with remote debugging settings, setup connection with the PC, etc. All you need is to click a bookmarklet.</p>
+<p><a href="http://www.softwareishard.com/images/posts/start-with-firebuglite/iPad.png" rel="lightbox[800]"><img src="http://www.softwareishard.com/images/posts/start-with-firebuglite/iPad-thumb.png" alt="" title="iPad" width="520" height="395" class="aligncenter size-medium wp-image-3366" /></a></p>
+<p>Read a post about how to create <a href="http://iosbookmarklets.com/tutorials/firebug-lite-bookmarklet-ipad/">Firebug Lite Bookmarklet for iPad</a>.</p>
+<h3>Run as Chrome Extension</h3>
+<p>Finally, you can <a href="https://chrome.google.com/webstore/detail/firebug-lite-for-google-c/bmagokdooijbeehmkpknfglimnifench">install Firebug Lite</a> as an extension into Google Chrome browser. </p>
+<p>There are benefits over Firebug Lite bookmarlet:</p>
+<ul>
+<li>Browser toolbar integration</li>
+<li>Able to activate Firebug Lite for a particular domain</li>
+<li>Firebug Lite will be loaded before all other scripts, allowing it to capture all console calls, and all XHR requests for that page</li>
+<li>It is faster to load, because all code and images will be store in the extension's directory in your machine</li>
+<li>Will be able to read external resources in the next version</li>
+</ul>
+<p>Read more about <a href="https://getfirebug.com/releases/lite/chrome/">Firebug Lite on Chrome</a>.</p>
+<h3>Resources</h3>
+<ul>
+<li><a href="https://getfirebug.com/firebuglite">Home Page</a></li>
+<li><a href="https://github.com/firebug/firebug-lite">Source Repository</a></li>
+<li><a href="https://github.com/firebug/firebug-lite/issues">Issue List</a></li>
+<li><a href="https://getfirebug.com/wiki/index.php/Firebug_Lite_FAQ">FAQ Page</a></li>
+<li><a href="https://groups.google.com/forum/?fromgroups#!forum/firebug">Newsgroups</a> (shared with Firebug)</li>
+</ul>
+<p>If you are interested to contribute to the project you can start with reading <a href="http://gal.steinitz.com/blog/2013/07/19/remember-firebug-lite/">Gal's post</a> explaining what you can do. <a href="https://twitter.com/galori">Gal Steinitz</a> is the current Firebug Lite maintainer, so shoot any questions about what's coming up in his direction!</p>
+<p>You might also be interested in what <a href="https://blog.getfirebug.com/2013/05/02/future-of-firebug-lite/">the future holds for Firebug Lite</a>.</p>
+<div class="bullet">&nbsp;</div>
+		<div class="clear"></div>
+  	</div> 
+</div>
+
+<hr />
+<div id="commenti">
+
+<div class="commentlist">
+
+<a class="rss_commenti" href="/feed/" title="Feed RSS Comments"><img src="http://www.softwareishard.com/blog/wp-content/themes/miniBits/miniBits/img/rss.gif" alt="Rss Commenti"/></a>
+
+<h4 id="comments">3 Comments</h4>
+
+<ol id="commentlist">
+
+
+	<li id="comment-38899">
+    	<div class="messaggio"><p>Nice info, i like firebug on firefox... 🙂</p>
+		</div>
+		<span class="autore"><a class="count" href="#comment-38899">#1</a> <a href='http://www.diarytips.com/' rel='external nofollow' class='url'>Backids99</a>		</span>	
+	</li>
+
+
+	<li id="comment-38902">
+    	<div class="messaggio"><p>i like firebug, it is best inspect element tools</p>
+		</div>
+		<span class="autore"><a class="count" href="#comment-38902">#2</a> <a href='http://www.kemelus.com' rel='external nofollow' class='url'>RyanDwi</a>		</span>	
+	</li>
+
+
+	<li id="comment-38910">
+    	<div class="messaggio"><p>Thank you very much, i was looking something like this 🙂</p>
+		</div>
+		<span class="autore"><a class="count" href="#comment-38910">#3</a> Ariel		</span>	
+	</li>
+
+</ol>
+
+
+
+</div>
+
+<div class="form_commenti">
+<p>Sorry, the comment form is closed at this time.</p>
+
+</div></div>
+<div class="clear"></div>
+
+	<!--
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://www.softwareishard.com/blog/planet-mozilla/how-to-start-with-firebug-lite/"
+    dc:identifier="http://www.softwareishard.com/blog/planet-mozilla/how-to-start-with-firebug-lite/"
+    dc:title="How to Start with Firebug Lite"
+    trackback:ping="http://www.softwareishard.com/blog/planet-mozilla/how-to-start-with-firebug-lite/trackback/" />
+</rdf:RDF>	-->
+
+ 
+
+</div>
+<hr />
+
+<div id="sidebar">
+<div class="top"></div>
+<div class="main_sidebar">
+
+	<div class="block">
+   <h3>Search:</h3>
+   <form id="searchform" method="get" action="http://www.softwareishard.com/blog">
+		<input class="cerca_modulo" type="text" name="s" id="s" size="12" />
+		<input class="cerca_invio" type="submit" value="Search" />
+	</form>
+	</div>
+<div class="block"><h3>About Jan Odvarko</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.softwareishard.com/blog/about/" title="About Me">About Me</a></li>
+<li><a href="https://github.com/janodvarko">GitHub</a></li>
+<li><a href="https://plus.google.com/+JanOdvarko">Google+</a></li>
+<li><a href="http://www.linkedin.com/in/odvarko">LinkedIn</a></li>
+<li><a href="https://www.ohloh.net/p/firebug/contributors/20658792769607">Ohloh</a></li>
+<li><a href="http://www.quora.com/Jan-Odvarko">Quora</a></li>
+<li><a href="https://twitter.com/janodvarko">Twitter</a></li>
+
+	</ul>
+</div>
+<div class="block"><h3>About My Projects</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.softwareishard.com/domplate/runner/index.php" title="Check out Domplate templates online">Domplate Runner</a></li>
+<li><a href="http://getfirebug.com">Firebug</a></li>
+<li><a href="http://www.softwareishard.com/blog/firecookie/" title="Firebug extension for managing cookies">Firecookie</a></li>
+<li><a href="http://www.softwareishard.com/blog/har-adopters/" title="List of tools supporting HAR format">HAR Adopters</a></li>
+<li><a href="http://www.softwareishard.com/blog/har-export-trigger/" title="Automate HAR export in Firefox 42">HAR Export Trigger</a></li>
+<li><a href="http://www.softwareishard.com/blog/har-viewer/" title="HTTP Archive Viewer &#8211; preview HAR files online">HAR Viewer</a></li>
+<li><a href="http://www.softwareishard.com/blog/har-12-spec/" title="JSON based format for data collected by HTTP monitoring tools">HTTP Archive Spec 1.2 (HAR)</a></li>
+<li><a href="https://github.com/firebug/websocket-monitor">Web Socket Monitor</a></li>
+
+	</ul>
+</div>
+<div class="block"><h3>Domplate Tutorial</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.softwareishard.com/blog/planet-mozilla/domplate-examples-part-i/" title="Set of examples about Domplate.">Part I. Examples</a></li>
+<li><a href="http://www.softwareishard.com/blog/domplate/domplate-examples-part-ii/" title="Set of examples about Domplate.">Part II. Examples</a></li>
+
+	</ul>
+</div>
+<div class="block"><h3>Extending Firebug Tutorial</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.softwareishard.com/blog/?p=3">Part I. Hello World!</a></li>
+<li><a href="http://www.softwareishard.com/blog/?p=4">Part II. Toolbar</a></li>
+<li><a href="http://www.softwareishard.com/blog/?p=7">Part III. Options</a></li>
+<li><a href="http://www.softwareishard.com/blog/?p=10">Part IV. Localization</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tutorial/extending-firebug-activable-panel-part-ix/">Part IX. Activable Panel</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tutorial/extending-firebug-domplate-part-v/">Part V. Domplate</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tutorial/extending-firebug-yahoo-search-part-vi/">Part VI. Yahoo! Search</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tutorial/extending-firebug-customize-net-panel-part-vii/">Part VII. Customize Net Panel</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tutorial/extending-firebug-net-panel-listener-part-viii/">Part VIII. Net Panel Listener</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tutorial/extending-firebug-inspector-part-x/">Part X. Inspector</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tutorial/extending-firebug-infotip-part-xi/">Part XI. Infotip</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tutorial/extending-firebug-hello-amd-part-xii/">Part XII. Hello AMD!</a></li>
+
+	</ul>
+</div>
+<div class="block"><h3>Miscellaneous</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://www.softwareishard.com/blog/extending-firebug/" title="How to develop extension for Firebug">Extending Firebug</a></li>
+<li><a href="http://www.softwareishard.com/blog/category/firebug-extension/" title="Posts about existing Firebug extensions">Firebug Extensions</a></li>
+<li><a href="http://www.softwareishard.com/blog/firebug-tips/" title="Various Firebug features explained">Firebug Tips &amp; Tricks</a></li>
+
+	</ul>
+</div>
+<div class="block"><h3>Subscribe</h3>
+	<ul class='xoxo blogroll'>
+<li><a href="http://feeds.feedburner.com/CommentsForSoftwareIsHard">Comments</a></li>
+<li><a href="http://onswipe.com/janodvarko" title="iPad enabled theme">iPad</a></li>
+<li><a href="http://feeds.feedburner.com/SoftwareIsHard">Posts</a></li>
+
+	</ul>
+</div>
+<div class="block"><h3>Categories</h3>		<ul>
+	<li class="cat-item cat-item-174"><a href="http://www.softwareishard.com/blog/category/consoleexport/" >ConsoleExport</a>
+</li>
+	<li class="cat-item cat-item-195"><a href="http://www.softwareishard.com/blog/category/design-pattern/" >Design Pattern</a>
+</li>
+	<li class="cat-item cat-item-198"><a href="http://www.softwareishard.com/blog/category/developer-tools/" >Developer Tools</a>
+</li>
+	<li class="cat-item cat-item-69"><a href="http://www.softwareishard.com/blog/category/documentation/" >Documentation</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.softwareishard.com/blog/category/domplate/" >Domplate</a>
+</li>
+	<li class="cat-item cat-item-81"><a href="http://www.softwareishard.com/blog/category/eventbug/" >Eventbug</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.softwareishard.com/blog/category/firebug-tutorial/" >Extending Firebug Tutorial</a>
+</li>
+	<li class="cat-item cat-item-45"><a href="http://www.softwareishard.com/blog/category/extension-architecture/" >Extension Architecture</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.softwareishard.com/blog/category/firebug/" >Firebug</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.softwareishard.com/blog/category/firebug-extension/" >Firebug Extension</a>
+</li>
+	<li class="cat-item cat-item-189"><a href="http://www.softwareishard.com/blog/category/firebug-lite/" >Firebug Lite</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.softwareishard.com/blog/category/firebug-tip/" >Firebug Tip</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.softwareishard.com/blog/category/firecookie/" >Firecookie</a>
+</li>
+	<li class="cat-item cat-item-86"><a href="http://www.softwareishard.com/blog/category/firestarter/" >Firestarter</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.softwareishard.com/blog/category/fireunit/" >Fireunit</a>
+</li>
+	<li class="cat-item cat-item-75"><a href="http://www.softwareishard.com/blog/category/har/" >HAR</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.softwareishard.com/blog/category/http-monitor/" >HTTP Monitor</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.softwareishard.com/blog/category/memory-leaks/" >Memory Leaks</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.softwareishard.com/blog/category/netexport/" >NetExport</a>
+</li>
+	<li class="cat-item cat-item-199"><a href="http://www.softwareishard.com/blog/category/page-load-performance/" >Page Load Performance</a>
+</li>
+	<li class="cat-item cat-item-196"><a href="http://www.softwareishard.com/blog/category/pixel-perfect/" >Pixel Perfect</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.softwareishard.com/blog/category/planet-mozilla/" >Planet Mozilla</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://www.softwareishard.com/blog/category/prism/" >Prism</a>
+</li>
+	<li class="cat-item cat-item-217"><a href="http://www.softwareishard.com/blog/category/react/" >React</a>
+</li>
+	<li class="cat-item cat-item-110"><a href="http://www.softwareishard.com/blog/category/release/" >Release</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.softwareishard.com/blog/category/selenium/" >Selenium</a>
+</li>
+	<li class="cat-item cat-item-43"><a href="http://www.softwareishard.com/blog/category/testing/" >Testing</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.softwareishard.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-197"><a href="http://www.softwareishard.com/blog/category/websockets/" >WebSockets</a>
+</li>
+		</ul>
+</div><div class="block"><h3>Recent Tweets</h3><div id="widget_twitter_vjck" ><ul><div id="twitter_time_line"  style="width:100%; overflow:hidden;" ><script type="text/javascript">function flip_twitter_image(arg) {var targetTagID = window.document.getElementById(arg); var styleStr = (window.document.documentElement.getAttribute("style") == window.document.documentElement.style) ? targetTagID.style.cssText : targetTagID.getAttribute( "style" ); var nonString = styleStr.match( /display:.*?none;/g ); var nonPos = nonString ? styleStr.indexOf( nonString ) : -1; if( nonPos >= 0 ) { styleStr = styleStr.substring( 0, nonPos ) + styleStr.substring( nonPos + nonString.length, styleStr.length ); styleStr = styleStr + "display:block;"; }else{ var blkString = styleStr.match( /display:.*?block;/g ); var blkPos = blkString ? styleStr.indexOf( blkString ) : -1; if( blkPos >= 0 ) { styleStr = styleStr.substring( 0, blkPos ) + styleStr.substring( blkPos + blkString.length, styleStr.length ); } styleStr = styleStr + "display:none;"; } if( styleStr ) { if( window.document.documentElement.getAttribute("style") == window.document.documentElement.style ) { targetTagID.style.cssText = styleStr; }else{ targetTagID.setAttribute( "style", styleStr); }}}</script><li>The HAR Show: Capturing and Analyzing performance data with HTTP Archive format
+ <br /><a href="http://t.co/q2N3U8zU" target="_blank" >http://t.co/q2N3U8zU</a></li><li>Firebug Tip: The Start Button <br /><a href="http://t.co/CY6IsFsg" target="_blank" >http://t.co/CY6IsFsg</a></li><li><a href="http://twitter.com/search?q=%23Firebug" target="_blank" >#Firebug</a> Tip: What the heck is BFCache? <br /><a href="http://t.co/OZNjSBkt" target="_blank" >http://t.co/OZNjSBkt</a></li><li><a href="http://twitter.com/search?q=%23Firebug" target="_blank" >#Firebug</a> Tip: Log Function Calls <br /><a href="http://t.co/WcdIVV8q" target="_blank" >http://t.co/WcdIVV8q</a></li><li><a href="http://twitter.com/search?q=%23Firebug" target="_blank" >#Firebug</a> Tip: Log DOM Events <br /><a href="http://t.co/dvrs5jdl" target="_blank" >http://t.co/dvrs5jdl</a></li></div></ul></div><!-- cached --></div></div>
+<div class="bottom"></div>
+</div><div class="clear"></div>
+
+<div id="footer">
+<a href="http://www.wordpress.org"><img src="http://www.softwareishard.com/blog/wp-content/themes/miniBits/miniBits/img/wordpress.gif" alt="Wordpress.org"/></a>
+<a href="http://www.creativebits.it/news/tema-wordpress-minibits/"><img src="http://www.softwareishard.com/blog/wp-content/themes/miniBits/miniBits/img/creativebits.gif" alt="clearPaper by CreativeBits.it"/></a>
+	<span>Copyright &copy; 2007 Software is hard. All rights reserved.</span>
+	<span><a href="http://validator.w3.org/check/referer" title="Pagina valida XHTML 1.0 Transitional">Xhtml</a>, <a href="http://jigsaw.w3.org/css-validator/check/referer" title="Pagina valida CSS v.1">Css</a>, <a href="http://www.softwareishard.com/blog/feed/">Rss</a>. Powered by <a href="http://www.creativebits.it/news/tema-wordpress-minibits/">miniBits</a> &amp; <a href="http://www.wordpress.org/">Wordpress</a>.</span></div>
+
+</div>
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var JQLBSettings = {"fitToScreen":"0","resizeSpeed":"400","displayDownloadLink":"0","navbarOnTop":"0","loopImages":"","resizeCenter":"","marginSize":"","linkTarget":"","help":"","prevLinkTitle":"previous image","nextLinkTitle":"next image","prevLinkText":"\u00ab Previous","nextLinkText":"Next \u00bb","closeTitle":"close image gallery","image":"Image ","of":" of ","download":"Download","jqlb_overlay_opacity":"80","jqlb_overlay_color":"#000000","jqlb_overlay_close":"1","jqlb_border_width":"10","jqlb_border_color":"#ffffff","jqlb_border_radius":"0","jqlb_image_info_background_transparency":"100","jqlb_image_info_bg_color":"#ffffff","jqlb_image_info_text_color":"#000000","jqlb_image_info_text_fontsize":"10","jqlb_show_text_for_image":"1","jqlb_next_image_title":"next image","jqlb_previous_image_title":"previous image","jqlb_next_button_image":"http:\/\/www.softwareishard.com\/blog\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/next.gif","jqlb_previous_button_image":"http:\/\/www.softwareishard.com\/blog\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/prev.gif","jqlb_maximum_width":"","jqlb_maximum_height":"","jqlb_show_close_button":"1","jqlb_close_image_title":"close image gallery","jqlb_close_image_max_heght":"22","jqlb_image_for_close_lightbox":"http:\/\/www.softwareishard.com\/blog\/wp-content\/plugins\/wp-lightbox-2\/styles\/images\/closelabel.gif","jqlb_keyboard_navigation":"1","jqlb_popup_size_fix":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.softwareishard.com/blog/wp-content/plugins/wp-lightbox-2/wp-lightbox-2.min.js?ver=1.3.4.1'></script>
+<script type='text/javascript' src='http://www.softwareishard.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.11'></script>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-3586722-1";
+urchinTracker();
+</script>
+</body>
+</html>

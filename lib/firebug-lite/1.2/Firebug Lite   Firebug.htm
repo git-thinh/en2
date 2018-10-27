@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<title>Firebug Lite : Firebug</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="stylesheet" type="text/css" media="screen,projection" href="/styles/screen.css?v2">
+
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.0/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.mousewheel-3.0.2.js"></script>
+<script type="text/javascript" src="/js/fancybox.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+			$('a.view').fancybox({
+			 'transitionIn' : 'elastic',
+			 'transitionOut' : 'elastic',
+			 'autoScale' : false,
+			 'centerOnScroll' : true
+			});
+			$('a.lightbox').fancybox({
+			 'transitionIn' : 'elastic',
+			 'transitionOut' : 'elastic',
+			 'hideOnContentClick' : true
+			});
+			$('a#whatsnew-show').click(function() {
+                $('#whatsnew15').toggle('slow');
+                return false;
+            });
+});
+</script>
+
+</head>
+
+<body id="article">
+<div id="wrap" class="group">
+
+<div id="header" class="group">
+
+<ul id="nav">
+<li><a href="/whatisfirebug">What is Firebug?</a>
+<span>Introduction and Features</span></li>
+<li><a href="http://getfirebug.com/wiki/">Resources</a>
+<span>Documentation wiki, FAQ, and other Firebug lore</span></li>
+<li><a href="/community">Community</a><span>Discussion forums and lists</span></li>
+<li><a href="/getinvolved">Get Involved</a><span>Hack the code, create plugins</span></li>
+</ul>
+
+<div id="logo-install" class="group">
+
+<div id="logo">
+<a href="/"></a>
+<h1>Firebug</h1>
+<h2>Web Development Evolved.</h2>
+</div>
+
+<div id="install" class="group">
+<p><a href="https://addons.mozilla.org/en-US/firefox/downloads/latest/1843/addon-1843-latest.xpi">Install Firebug For Firefox</a>
+<span>100% free and open source</span></p>
+<ul>
+<li><a href="/downloads">Other Versions</a></li>
+<li><a href="/firebuglite">Firebug Lite</a></li>
+<li><a href="/downloads#extensions">Extensions</a></li>
+</ul>
+</div>
+
+</div> <!-- /END logo-install -->
+
+
+</div> <!-- /END header -->
+
+<div id="articleheader">
+<!-- Undefined content: article_img --></div>
+
+<div id="secondary" class="group">
+
+<div id="contentarea" class="group">
+
+<div id="content" class="group">
+<h2 class="heading">Firebug Lite 1.2</h2>
+
+<div class="article">
+
+<div class="columns">
+        <div class="fullColumn">
+
+            <div>
+            <a href="/img/screenshot_1.png" class="zoom"><img src="/img/screenshot_1_thumb.png"></a></div>
+            <p>Firebug is an extension for Firefox, but what happens when you need to 
+            test your pages in Internet Explorer, Opera, and Safari?</p>
+
+            <p>The solution is Firebug Lite, a JavaScript file you can insert 
+            into your pages to simulate some Firebug features in browsers that are 
+            not named "Firefox".</p>
+
+            <p>Firebug Lite creates the variable "firebug" and
+            doesn't affect or interfere with HTML elements that aren't created
+            by itself.</p>
+            
+            <p>Screenshots:
+            <ul>
+              <li><a href="lite/ie.html">IE</a></li>
+              <li><a href="lite/opera.html">Opera</a></li>
+
+              <li><a href="lite/Safari.html">Safari</a></li>
+            </ul>
+            </p>
+            
+            <p><strong>Latest Version:</strong> 1.2.1 (2008-09 <a href="">CHANGELOG</a>)</p>
+            
+            <!-- Installing Firebug Lite -->
+            <h3>Installing Firebug Lite 1.2</h3>
+
+            <p>Insert this line of code into any page that you want to contain
+            Firebug lite:</p>
+
+<pre class="code">    &lt;script type='text/javascript' 
+        src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'&gt;&lt;/script&gt;</pre>
+        
+            <!-- Firebug lite as bookmarklet -->
+            <h3>Firebug Lite as bookmarklet</h3>
+            <p>Drag the following link to your bookmark toolbar and 
+            use Firebug Lite on any page:</p>
+            
+            <p><a href="javascript:var firebug=document.createElement('script');firebug.setAttribute('src','http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js');document.body.appendChild(firebug);(function(){if(window.firebug.version){firebug.init();}else{setTimeout(arguments.callee);}})();void(firebug);">Firebug Lite</a></p>
+
+            <h3>Configuring Firebug Lite</h3>
+            Height of the firebug lite form is resizeable in latest version;
+            <pre class="code">  &lt;script type="text/javascript"&gt;
+  firebug.env.height = 500;
+  &lt;/script&gt;
+            </pre>
+            
+            Also, developers can use their own css file;
+            <pre class="code">  &lt;script type="text/javascript"&gt;
+
+  firebug.env.css = "/myown/firebug.css"
+  &lt;/script&gt;
+            </pre>
+            
+            
+            <!-- Using Firebug Lite Offline -->
+            <h3>Using Firebug Lite Offline</h3>
+            <p>Download the <a href="http://getfirebug.com/releases/lite/1.2/">source</a></p>
+            <p>Import <a href="/releases/lite/1.2/firebug-lite-compressed.js">firebug-lite-compressed.js</a> or <a href="/releases/lite/1.2/firebug-lite.js">firebug-lite.js</a> into your site's directory. Find "firebug-lite.css" URL on the javascript file which you imported and replace this with offline address of firebug-lite.css file.</p>
+
+<pre class="code">
+    &lt;script language="javascript" type="text/javascript" 
+        src="/path/to/firebug/firebug-lite.js"&gt;&lt;/script&gt;</pre>
+
+            <!-- Commands -->
+            <h3>Commands</h3>
+            <p><em>Now FBLite supports <a href="http://getfirebug.com/console.html">all basic commands</a> of Firebug.</em></p>
+
+            <p>firebug.watchXHR: Use this function to watch the status of XmlHttpRequest objects.</p>
+<pre class="code">    var req = new XmlHttpRequest;
+    firebug.watchXHR(req);</pre>
+            <p>firebug.inspect: Now elements can be inspected in javascript code:</p>
+            <pre class="code"> firebug.inspect(document.body.firstChild);
+            </pre>
+            <p>On some browsers, the console object is already declared. If you observe errors in Safari, for instance, use the console commands in this fashion:
+<pre class="code">    firebug.d.console.cmd.log("test");
+    firebug.d.console.cmd.dir([ "test" ]);</pre>
+
+    
+            <!-- Notes -->
+            <h3>Notes</h3>
+            <p>On some browsers, the console object is already declared. If you observe errors in Safari, for instance, use the console commands in this fashion:
+<pre class="code">    firebug.d.console.cmd.log("test");
+    firebug.d.console.cmd.dir([ "test" ]);</pre>
+
+            <p>Firebug Lite creates the variables "firebug" and doesn't affect or interfere HTML elements that aren't create by itself.</p>
+        </div>
+    </div>
+</div> <!-- /END article-->
+
+</div> <!-- /END content -->
+
+<div id="links">
+<h2 class="heading">Links and Elsewhere</h2>
+
+<div id="sidenav">
+<h3>What is Firebug?</h3>
+<ul>
+<li><a href="/enable">Enabling Firebug 1.5</a></li>
+<li><a href="/html">HTML Development</a></li>
+<li><a href="/css">CSS Development</a></li>
+<li><a href="/layout">CSS Layout</a></li>
+<li><a href="/network">Network Monitoring</a></li>
+<li><a href="/javascript">Javascript Debugging</a></li>
+<li><a href="/errors">Finding Errors</a></li>
+<li><a href="/dom">DOM Exploration</a></li>
+<li><a href="/commandline">Javascript Command Line</a></li>
+<li><a href="/logging">Javascript Logging</a></li>
+</ul>
+</div>
+<!-- Delicious -->
+<div id="delicious-posts-firebug" class="delicious-posts">
+<h2 class="delicious-banner sidebar-title">Firebug around the web</h2>
+<script type="text/javascript" src="http://feeds.delicious.com/v2/js/firebugnews?count=10&amp;title=&amp;sort=date&amp;extended"></script></div>
+</div> <!-- /END links -->
+
+</div> <!-- /END contentarea -->
+
+</div> <!-- /END secondary -->
+
+<div id="footer" class="group">
+
+<div class="nav">
+<h3>Firebug</h3>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/downloads">Downloads</a></li>
+<li><a href="http://getfirebug.com/wiki/">Resources</a></li>
+<li><a href="/whatisfirebug">What is Firebug</a>
+</li>
+<li><a href="/community">Community</a></li>
+<li><a href="/getinvolved">Get Involved</a></li>
+<li><a href="http://blog.getfirebug.com/">Blog</a></li>
+</ul>
+</div>
+
+<div id="legal">
+<div id="copyright">
+<img src="/img/mozilla-logo.png" width="41" height="31" alt="Firefox Logo" />
+<p><span>Copyright &copy; 2005-2010 Mozilla.</span> All rights reserved.</p>
+</div>
+
+<ul>
+<li><a href="http://www.mozilla.com/en-US/privacy-policy.html">Privacy Policy</a></li>
+<li><a href="http://www.mozilla.com/en-US/about/legal.html">Legal Notices</a></li>
+
+</ul>
+</div>
+<div class="bigfirebug"></div>
+
+
+</div> <!-- /END footer -->
+</div> <!-- /END wrap -->
+
+</body>
+</html>

@@ -9,10 +9,6 @@ using System.Web;
 using System.Text;
 using System.Diagnostics;
 
-// Tested with mono 2.6.3 and mono 2.8
-// Run this with the following command:
-// MONO_PATH=/usr/lib/cli/gdk-sharp-2.0/ LD_LIBRARY_PATH="/usr/lib/xulrunner-1.9.2.13/" mono --debug GeckoFxTest.exe
-// requires gdk-sharp assembly in the gac (which is in package libgtk2.0-cil)
 namespace en2
 {
     class App
@@ -140,6 +136,22 @@ namespace en2
         //{
         //    GeckoElement g = browser.Document.DocumentElement;
         //    DisplayElements(g);
+        //}
+
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        GeckoInputElement username = new GeckoInputElement(browser.Document.GetElementsByName("email")[0].DomObject);
+        //        username.Value = "YourEMAIL";
+        //        GeckoInputElement password = new GeckoInputElement(browser.Document.GetElementsByName("password")[0].DomObject);
+        //        password.Value = "YourPassword";
+        //        browser.Navigate("javascript:void(document.forms[0].submit())");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //    }
         //}
 
         protected void AddTab()
@@ -318,7 +330,7 @@ namespace en2
             TextBox urlbox = new TextBox();
             urlbox.Top = 0;
             urlbox.Width = 200;
-            urlbox.Text = "https://dictionary.cambridge.org/grammar/british-grammar/above-or-over";
+            urlbox.Text = "https://getfirebug.com/releases/lite/1.2/";
 
             Button nav = new Button();
             nav.Text = "Go";
@@ -334,28 +346,29 @@ namespace en2
 
             browser.DocumentCompleted += (se, ev) =>
             {
-                if (html == string.Empty)
-                {
-                    string url = urlbox.Text, text = string.Empty, _fix_lib = string.Empty;
+                //if (html == string.Empty)
+                //{
+                //    string url = urlbox.Text, text = string.Empty, _fix_lib = string.Empty;
 
-                    Debug.WriteLine("#-> " + url);
+                //    Debug.WriteLine("#-> " + url);
 
-                    text = f_link_getHtmlOnline(url);
+                //    text = f_link_getHtmlOnline(url);
 
-                    string head = text.Split(new string[] { "<body" }, StringSplitOptions.None)[0], s = "<div" + text.Substring(head.Length + 5);
-                    int posH1 = s.ToLower().IndexOf("<h1");
-                    if (posH1 != -1) s = s.Substring(posH1, s.Length - posH1);
+                //    string head = text.Split(new string[] { "<body" }, StringSplitOptions.None)[0], s = "<div" + text.Substring(head.Length + 5);
+                //    int posH1 = s.ToLower().IndexOf("<h1");
+                //    if (posH1 != -1) s = s.Substring(posH1, s.Length - posH1);
 
-                    head = Html.f_html_Format(url, head);
-                    s = Html.f_html_Format(url, s);
+                //    head = Html.f_html_Format(url, head);
+                //    s = Html.f_html_Format(url, s);
 
-                    //if (File.Exists("view/fix.html")) _fix_lib = File.ReadAllText("view/fix.html");
-                    text = head.Replace("<head>", @"<head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />" + _fix_lib) + "<body><article id=___body><!--START_BODY-->" + s + "<!--END_BODY--></article></body></html>";
-                    html = s;
-                }
+                //    //if (File.Exists("view/fix.html")) _fix_lib = File.ReadAllText("view/fix.html");
+                //    text = head.Replace("<head>", @"<head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />" + _fix_lib) + "<body><article id=___body><!--START_BODY-->" + s + "<!--END_BODY--></article></body></html>";
+                //    html = s;
+                //}
 
-                browser.Document.Body.InnerHtml = html;
-
+                //browser.Document.Body.InnerHtml = html;
+                string firebuglite_bookmark_run = "javascript:var firebug=document.createElement('script');firebug.setAttribute('src','http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js');document.body.appendChild(firebug);(function(){if(window.firebug.version){firebug.init();}else{setTimeout(arguments.callee);}})();void(firebug);";
+                browser.Navigate(firebuglite_bookmark_run);
             };
 
             nav.Click += delegate

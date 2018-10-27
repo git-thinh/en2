@@ -3,7 +3,12 @@ https://owa.nttdata-emea.com/owa/#path=/mail
 
 http://ftp.mozilla.org/pub/mozilla.org/xulrunner/releases/1.9.0.17/runtimes/xulrunner-1.9.0.17.en-US.win32.zip
 
-
+https://github.com/firebug/firebug-lite
+javascript:var firebug=document.createElement('script');firebug.setAttribute('src','http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js');document.body.appendChild(firebug);(function(){if(window.firebug.version){firebug.init();}else{setTimeout(arguments.callee);}})();void(firebug);
+https://getfirebug.com/releases/lite/1.2/
+https://getfirebug.com/releases/lite/chrome/beta/
+https://chrome.google.com/webstore/detail/firebug-lite-for-google-c/ehemiojjcpldeipjhjkepfdaohajpbdo?hl=th&itemlang=en
+https://getfirebug.com/releases/lite/chrome/
 
 
 https://github.com/ataranto/CefSharp/issues/12
