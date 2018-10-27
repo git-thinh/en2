@@ -25,7 +25,7 @@ namespace en2
                 var assembly = Assembly.GetExecutingAssembly();
                 resourceName = typeof(App).Namespace + "." + resourceName.Replace(" ", "_").Replace("\\", ".").Replace("/", ".");
                 //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                using (Stream stream = File.OpenRead("bin2/" + comName + ".dll"))
+                using (Stream stream = File.OpenRead("bin/" + comName + ".dll"))
                 {
                     if (stream == null)
                     {
@@ -51,20 +51,23 @@ namespace en2
         [STAThread]
         public static void Main(string[] args)
         {
+            var http = new HttpProxyServer();
+            http.Start("http://*:56789/");
+
             //System.Net.ServicePointManager.DefaultConnectionLimit = 1000;
             //// active SSL 1.1, 1.2, 1.3 for WebClient request HTTPS
             //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | (SecurityProtocolType)3072 | (SecurityProtocolType)0x00000C00 | SecurityProtocolType.Tls;
 
-
             //Xpcom.Initialize(@"D:\temp\xulrunner");
-            Xpcom.Initialize(@"bin2");
+            Xpcom.Initialize(@"bin");
             //GeckoPreferences.User["javascript.enabled"] = false;
             //GeckoPreferences.User["security.warn_viewing_mixed"] = false;
             //GeckoPreferences.User["plugin.state.flash"] = 0;
             //GeckoPreferences.User["gfx.font_rendering.graphite.enabled"] = true;
 
             Application.Run(new MyForm());
+            http.Stop();
         }
     }
 
@@ -331,7 +334,8 @@ namespace en2
             urlbox.Top = 0;
             urlbox.Width = 200;
             //urlbox.Text = "https://getfirebug.com/releases/lite/1.2/";
-            urlbox.Text = "";
+            //urlbox.Text = "file:///G:/en2/build/view/demo.html";
+            //urlbox.Text = "file:///G:/en2/build/view/demo.html";
 
             Button nav = new Button();
             nav.Text = "Go";
@@ -368,8 +372,10 @@ namespace en2
                 }
                 browser.Document.Body.InnerHtml = html;
 
-                //string firebuglite_bookmark_run = "javascript:var firebug=document.createElement('script');firebug.setAttribute('src','http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js');document.body.appendChild(firebug);(function(){if(window.firebug.version){firebug.init();}else{setTimeout(arguments.callee);}})();void(firebug);";
-                //browser.Navigate(firebuglite_bookmark_run);
+                //Debug.WriteLine(browser.Document.Body.InnerHtml)
+
+                string firebuglite_bookmark_run = "javascript:var firebug=document.createElement('script');firebug.setAttribute('src','http://localhost:56789/firebug-lite-compressed.js');document.body.appendChild(firebug);(function(){if(window.firebug.version){firebug.init();}else{setTimeout(arguments.callee);}})();void(firebug);";
+                browser.Navigate(firebuglite_bookmark_run);
             };
 
             nav.Click += delegate
