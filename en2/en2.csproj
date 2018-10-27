@@ -36,6 +36,10 @@
       <HintPath>..\lib\dll\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Skybound.Gecko.1.9.0.0">
+      <HintPath>..\lib\Skybound.Gecko.1.9.0.0.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <HintPath>..\lib\dll\System.Core.dll</HintPath>
@@ -91,11 +95,6 @@
     <ProjectReference Include="..\lib\HtmlAgilityPack\HtmlAgilityPack.csproj">
       <Project>{9e53646b-5349-419e-a9e1-c15dac63c19e}</Project>
       <Name>HtmlAgilityPack</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\lib\Skybound.Gecko-1.8.3\Skybound.Gecko.csproj">
-      <Project>{877d1a24-2d5e-4c46-a933-fcf11ea0403b}</Project>
-      <Name>Skybound.Gecko</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

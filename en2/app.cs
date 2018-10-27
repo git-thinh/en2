@@ -25,7 +25,7 @@ namespace en2
                 var assembly = Assembly.GetExecutingAssembly();
                 resourceName = typeof(App).Namespace + "." + resourceName.Replace(" ", "_").Replace("\\", ".").Replace("/", ".");
                 //using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-                using (Stream stream = File.OpenRead("bin/" + comName + ".dll"))
+                using (Stream stream = File.OpenRead("bin2/" + comName + ".dll"))
                 {
                     if (stream == null)
                     {
@@ -58,7 +58,7 @@ namespace en2
 
 
             //Xpcom.Initialize(@"D:\temp\xulrunner");
-            Xpcom.Initialize(@"Bin");
+            Xpcom.Initialize(@"bin2");
             //GeckoPreferences.User["javascript.enabled"] = false;
             //GeckoPreferences.User["security.warn_viewing_mixed"] = false;
             //GeckoPreferences.User["plugin.state.flash"] = 0;
@@ -330,7 +330,8 @@ namespace en2
             TextBox urlbox = new TextBox();
             urlbox.Top = 0;
             urlbox.Width = 200;
-            urlbox.Text = "https://getfirebug.com/releases/lite/1.2/";
+            //urlbox.Text = "https://getfirebug.com/releases/lite/1.2/";
+            urlbox.Text = "";
 
             Button nav = new Button();
             nav.Text = "Go";
@@ -346,29 +347,29 @@ namespace en2
 
             browser.DocumentCompleted += (se, ev) =>
             {
-                //if (html == string.Empty)
-                //{
-                //    string url = urlbox.Text, text = string.Empty, _fix_lib = string.Empty;
+                if (html == string.Empty)
+                {
+                    string url = "https://dictionary.cambridge.org/grammar/british-grammar/above-or-over", text = string.Empty, _fix_lib = string.Empty;
 
-                //    Debug.WriteLine("#-> " + url);
+                    Debug.WriteLine("#-> " + url);
 
-                //    text = f_link_getHtmlOnline(url);
+                    text = f_link_getHtmlOnline(url);
 
-                //    string head = text.Split(new string[] { "<body" }, StringSplitOptions.None)[0], s = "<div" + text.Substring(head.Length + 5);
-                //    int posH1 = s.ToLower().IndexOf("<h1");
-                //    if (posH1 != -1) s = s.Substring(posH1, s.Length - posH1);
+                    string head = text.Split(new string[] { "<body" }, StringSplitOptions.None)[0], s = "<div" + text.Substring(head.Length + 5);
+                    int posH1 = s.ToLower().IndexOf("<h1");
+                    if (posH1 != -1) s = s.Substring(posH1, s.Length - posH1);
 
-                //    head = Html.f_html_Format(url, head);
-                //    s = Html.f_html_Format(url, s);
+                    head = Html.f_html_Format(url, head);
+                    s = Html.f_html_Format(url, s);
 
-                //    //if (File.Exists("view/fix.html")) _fix_lib = File.ReadAllText("view/fix.html");
-                //    text = head.Replace("<head>", @"<head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />" + _fix_lib) + "<body><article id=___body><!--START_BODY-->" + s + "<!--END_BODY--></article></body></html>";
-                //    html = s;
-                //}
+                    //if (File.Exists("view/fix.html")) _fix_lib = File.ReadAllText("view/fix.html");
+                    text = head.Replace("<head>", @"<head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />" + _fix_lib) + "<body><article id=___body><!--START_BODY-->" + s + "<!--END_BODY--></article></body></html>";
+                    html = s;
+                }
+                browser.Document.Body.InnerHtml = html;
 
-                //browser.Document.Body.InnerHtml = html;
-                string firebuglite_bookmark_run = "javascript:var firebug=document.createElement('script');firebug.setAttribute('src','http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js');document.body.appendChild(firebug);(function(){if(window.firebug.version){firebug.init();}else{setTimeout(arguments.callee);}})();void(firebug);";
-                browser.Navigate(firebuglite_bookmark_run);
+                //string firebuglite_bookmark_run = "javascript:var firebug=document.createElement('script');firebug.setAttribute('src','http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js');document.body.appendChild(firebug);(function(){if(window.firebug.version){firebug.init();}else{setTimeout(arguments.callee);}})();void(firebug);";
+                //browser.Navigate(firebuglite_bookmark_run);
             };
 
             nav.Click += delegate
