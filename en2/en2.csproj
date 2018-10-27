@@ -93,7 +93,7 @@
       <Name>HtmlAgilityPack</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\lib\Skybound.Gecko\Skybound.Gecko.csproj">
+    <ProjectReference Include="..\lib\Skybound.Gecko-1.8.3\Skybound.Gecko.csproj">
       <Project>{877d1a24-2d5e-4c46-a933-fcf11ea0403b}</Project>
       <Name>Skybound.Gecko</Name>
       <Private>False</Private>

@@ -60,8 +60,13 @@ namespace en2
             //ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | (SecurityProtocolType)3072 | (SecurityProtocolType)0x00000C00 | SecurityProtocolType.Tls;
 
+
             //Xpcom.Initialize(@"D:\temp\xulrunner");
             Xpcom.Initialize(@"Bin");
+            //GeckoPreferences.User["javascript.enabled"] = false;
+            //GeckoPreferences.User["security.warn_viewing_mixed"] = false;
+            //GeckoPreferences.User["plugin.state.flash"] = 0;
+            //GeckoPreferences.User["gfx.font_rendering.graphite.enabled"] = true;
 
             Application.Run(new MyForm());
         }
@@ -141,7 +146,7 @@ namespace en2
         {
             var tabPage = new TabPage();
             tabPage.Text = "blank";
-            var browser = new GeckoWebBrowser();
+            var browser = new GeckoWebBrowser() {  };
             browser.Dock = DockStyle.Fill;
 
             tabPage.DockPadding.Top = 25;
@@ -306,6 +311,8 @@ namespace en2
         ////    }
         ////}
 
+        static string html = string.Empty;
+
         protected void AddToolbarAndBrowserToTab(TabPage tabPage, GeckoWebBrowser browser)
         {
             TextBox urlbox = new TextBox();
@@ -327,32 +334,36 @@ namespace en2
 
             browser.DocumentCompleted += (se, ev) =>
             {
-                string url = urlbox.Text, text = string.Empty, _fix_lib = string.Empty;
+                if (html == string.Empty)
+                {
+                    string url = urlbox.Text, text = string.Empty, _fix_lib = string.Empty;
 
-                Debug.WriteLine("#-> " + url);
+                    Debug.WriteLine("#-> " + url);
 
-                text = f_link_getHtmlOnline(url);
+                    text = f_link_getHtmlOnline(url);
 
-                string head = text.Split(new string[] { "<body" }, StringSplitOptions.None)[0], s = "<div" + text.Substring(head.Length + 5);
-                int posH1 = s.ToLower().IndexOf("<h1");
-                if (posH1 != -1) s = s.Substring(posH1, s.Length - posH1);
+                    string head = text.Split(new string[] { "<body" }, StringSplitOptions.None)[0], s = "<div" + text.Substring(head.Length + 5);
+                    int posH1 = s.ToLower().IndexOf("<h1");
+                    if (posH1 != -1) s = s.Substring(posH1, s.Length - posH1);
 
-                head = Html.f_html_Format(url, head);
-                s = Html.f_html_Format(url, s);
+                    head = Html.f_html_Format(url, head);
+                    s = Html.f_html_Format(url, s);
 
-                //if (File.Exists("view/fix.html")) _fix_lib = File.ReadAllText("view/fix.html");
-                text = head.Replace("<head>", @"<head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />" + _fix_lib) + "<body><article id=___body><!--START_BODY-->" + s + "<!--END_BODY--></article></body></html>";
+                    //if (File.Exists("view/fix.html")) _fix_lib = File.ReadAllText("view/fix.html");
+                    text = head.Replace("<head>", @"<head><meta http-equiv=""Content-Type"" content=""text/html; charset=utf-8"" />" + _fix_lib) + "<body><article id=___body><!--START_BODY-->" + s + "<!--END_BODY--></article></body></html>";
+                    html = s;
+                }
 
-                browser.Document.Body.InnerHtml = s;
+                browser.Document.Body.InnerHtml = html;
 
             };
 
             nav.Click += delegate
             {
-                //// use javascript to warn if url box is empty.
-                //if (string.IsNullOrEmpty(urlbox.Text.Trim())) browser.Navigate("javascript:alert('hey try typing a url!');");
-                //browser.Navigate(urlbox.Text);
-                //tabPage.Text = urlbox.Text;
+                // use javascript to warn if url box is empty.
+                if (string.IsNullOrEmpty(urlbox.Text.Trim())) browser.Navigate("javascript:alert('hey try typing a url!');");
+                browser.Navigate(urlbox.Text);
+                tabPage.Text = urlbox.Text;
             };
 
             newTab.Click += delegate { AddTab(); };
